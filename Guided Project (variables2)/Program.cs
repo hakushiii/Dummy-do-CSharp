@@ -189,8 +189,11 @@ do
                             noMatchesDog = false;
                         }
                     }
-
                     // #3d if "this dog" is match write match message + dog description
+                    if (!noMatchesDog){
+                        Console.WriteLine($"{ourAnimals[i,3]} (ID#: {ourAnimals[i,0]})");
+                        Console.WriteLine(dogDescription);
+                    }
                 }
             }
 
