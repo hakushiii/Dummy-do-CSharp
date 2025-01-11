@@ -152,7 +152,7 @@ do
             string dogDescription = "";
             
             // #4 update to "rotating" animation with countdown
-            string[] searchingIcons = {".  ", ".. ", "..."};
+            string[] searchingIcons = {"--", "/ ", "|", "\\"};
 
             // loop ourAnimals array to search for matching animals
             for (int i = 0; i < maxPets; i++)
