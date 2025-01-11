@@ -133,6 +133,7 @@ do
             // #1 Display all dogs with a multiple search characteristics
 
             string dogCharacteristic = "";
+            string[] dogCharacteristicList = [];
 
             while (dogCharacteristic == "")
             {
@@ -142,7 +143,7 @@ do
                 if (readResult != null)
                 {
                     dogCharacteristic = readResult.ToLower();
-                    string[] dogCharacteristicList = dogCharacteristic.Replace(" ","").Split(',');
+                    dogCharacteristicList = dogCharacteristic.Replace(" ","").Split(',');
                     Console.WriteLine();
                 }
             }
@@ -169,7 +170,7 @@ do
                         foreach (string icon in searchingIcons)
                         {
                             Console.Write($"\rsearching our dog {ourAnimals[i, 3]} for {dogCharacteristic} {icon}");
-                            Thread.Sleep(250);
+                            Thread.Sleep(50);
                         }
                         
                         Console.Write($"\r{new String(' ', Console.BufferWidth)}");
@@ -177,13 +178,16 @@ do
                     
                     // #3a iterate submitted characteristic terms and search description for each term
                     
-                    if (dogDescription.Contains(dogCharacteristic))
+                    //if (dogDescription.Contains(dogCharacteristic))
+                    foreach (string word in dogCharacteristicList)
                     {
                         // #3b update message to reflect term 
                         // #3c set a flag "this dog" is a match
-                        Console.WriteLine($"\nOur dog {ourAnimals[i, 3]} is a match!");
+                        if (dogDescription.Contains(word)){
+                            Console.WriteLine($"Our dog {ourAnimals[i, 3]} matches the search for {word}");
 
-                        noMatchesDog = false;
+                            noMatchesDog = false;
+                        }
                     }
 
                     // #3d if "this dog" is match write match message + dog description
